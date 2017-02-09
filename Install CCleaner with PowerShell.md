@@ -10,7 +10,28 @@ $destination = "$env:userprofile\Downloads\ccsetup526.exe"
 Invoke-WebRequest $source -OutFile $destination
 .\ccsetup526.exe /S
 Start-Sleep -s 15
-# Auto Clean with CCleaner
+exit
+```
+
+## If you want you can also run a cleaning command:
+> Auto Clean with CCleaner
+
+```
+cd $env:programfiles\CCleaner
+.\CCleaner.exe /AUTO
+Start-Sleep -s 15
+exit
+```
+
+# Run all commands:
+
+```
+cd $env:userprofile\Downloads
+$source = "http://download.piriform.com/ccsetup526.exe"
+$destination = "$env:userprofile\Downloads\ccsetup526.exe"
+Invoke-WebRequest $source -OutFile $destination
+.\ccsetup526.exe /S
+Start-Sleep -s 15
 cd $env:programfiles\CCleaner
 .\CCleaner.exe /AUTO
 Start-Sleep -s 15
