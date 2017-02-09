@@ -4,3 +4,5 @@
 Java 8 Update 111
 
 `wmic product where "name like 'Java%%'" call uninstall /nointeractive`
+
+> The Command will remove every Java Version on the System
