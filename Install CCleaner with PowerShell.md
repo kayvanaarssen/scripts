@@ -9,7 +9,7 @@ $source = "http://download.piriform.com/ccsetup526.exe"
 $destination = "$env:userprofile\Downloads\ccsetup526.exe"
 Invoke-WebRequest $source -OutFile $destination
 .\ccsetup.exe /S
-Start-Sleep -s 15
+Start-Sleep -s 20
 rm .\ccsetup*
 exit
 exit
@@ -21,7 +21,7 @@ exit
 ```
 cd $env:programfiles\CCleaner
 .\CCleaner.exe /AUTO
-Start-Sleep -s 15
+Start-Sleep -s 20
 exit
 exit
 ```
@@ -34,11 +34,11 @@ $source = "http://download.piriform.com/ccsetup526.exe"
 $destination = "$env:userprofile\Downloads\ccsetup.exe"
 Invoke-WebRequest $source -OutFile $destination
 .\ccsetup.exe /S
-Start-Sleep -s 15
+Start-Sleep -s 20
+rm .\ccsetup*
 cd $env:programfiles\CCleaner
 .\CCleaner.exe /AUTO
-Start-Sleep -s 15
-rm .\ccsetup*
+Start-Sleep -s 20
 exit
 exit
 ```
