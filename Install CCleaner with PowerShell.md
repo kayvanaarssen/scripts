@@ -10,6 +10,7 @@ $destination = "$env:userprofile\Downloads\ccsetup526.exe"
 Invoke-WebRequest $source -OutFile $destination
 .\ccsetup.exe /S
 Start-Sleep -s 15
+rm .\ccsetup*
 exit
 exit
 ```
@@ -37,6 +38,7 @@ Start-Sleep -s 15
 cd $env:programfiles\CCleaner
 .\CCleaner.exe /AUTO
 Start-Sleep -s 15
+rm .\ccsetup*
 exit
 exit
 ```
