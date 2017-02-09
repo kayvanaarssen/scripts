@@ -1,0 +1,15 @@
+# Copy the Public Key to the Edgerouter
+
+`scp -P 10022 ~/.ssh/id_rsa.pub admin@<Edgerouter IP>:/tmp/`
+
+# Login to edgerouter and load the SSH Key
+
+## Code to execute on Router
+
+> Change port 10022 if you set SSH to a other port
+
+```
+configure
+loadkey admin /tmp/id_rsa.pub
+save
+```
