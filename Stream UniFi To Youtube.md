@@ -6,7 +6,9 @@
 
 # Start the Stream
 
-```avconv -rtsp_transport tcp -i rtsp://xxxxxxxxxx.com:7447/XXXXXXXXXXXXX -f flv rtmp://x.rtmp.youtube.com/live2/xxxx-xxxx-xxxx-xxxx```
+```
+avconv -rtsp_transport tcp -i rtsp://xxxxxxxxxx.com:7447/XXXXXXXXXXXXX -f flv rtmp://x.rtmp.youtube.com/live2/xxxx-xxxx-xxxx-xxxx
+```
 
 # Start the stream on startup of the server
 
