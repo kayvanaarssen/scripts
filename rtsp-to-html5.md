@@ -17,6 +17,10 @@ sudo apt-get install -y nodejs
 
 `sudo npm -g install http-server`
 
+# Install libav-tools
+
+`sudo apt-get install libav-tools`
+
 # Install Git / JSMpeg
 
 ```
