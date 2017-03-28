@@ -37,9 +37,9 @@ git clone https://github.com/phoboslab/jsmpeg.git
 ## Put the following in: 
 
 ```
-@reboot kay nohup node /home/kay/jsmpeg/websocket-relay.js CWCpass12 8081 8082
+@reboot kay nohup node /home/kay/jsmpeg/websocket-relay.js password 8081 8082
 @reboot kay nohup http-server /home/kay/jsmpeg -p 8080
-@reboot kay nohup avconv -r 30 -i rtsp://192.168.100.151:7447/58afee94c2dc2fb7893182c6_0 -f mpegts -codec:v mpeg1video -s 1024x576 -b:v 2048k -bf 0 -an http://192.168.100.144:8081/CWCpass12 
+@reboot kay nohup avconv -r 30 -i rtsp://192.168.100.151:7447/58afee94c2dc2fb7893182c6_0 -f mpegts -codec:v mpeg1video -s 1024x576 -b:v 2048k -bf 0 -an http://192.168.100.144:8081/password 
 ```
 
 View the result on: `https://192.168.100.144:8080/view-stream.html`
