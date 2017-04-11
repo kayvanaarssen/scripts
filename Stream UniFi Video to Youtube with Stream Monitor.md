@@ -28,7 +28,7 @@ Put the following in the file:
 
 ```python
 #!/usr/bin/env python
-import socket, subprocess, urllib, json
+import socket, subprocess, urllib, json, psutil
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.settimeout(5)
@@ -46,7 +46,7 @@ YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = "v3"
 livekey = 'YOUR_YOUTUBE_LIVE_KEY' #<-- CHANGE ME
 channelId = 'YOUR_YOUTUBE_CHANNEL_ID' #<-- CHANGE ME
-rtmp = 'rtmp://a.rtmp.youtube.com/live2/'
+rtmp = 'rtmp://a.rtmp.youtube.com/live2'
 
 #DEFINE FFMPEG COMMAND
 ffmpegcmd = 'ffmpeg -loglevel 16 -re -rtsp_transport tcp -i rtsp://' +str(host)+ ':' +str(port)+'/' +str(camID)+' -c:v libx264 -preset veryfast -maxrate 3000k -bufsize 6000k -pix_fmt yuv420p -g 50 -c:a aac -b:a 160k -ac 2 -ar 44100 -f flv '+str(rtmp)+'/' + str(livekey)
@@ -57,8 +57,24 @@ data = json.load(urllib.urlopen(url))
 
 livestatus = (data['pageInfo']['totalResults'])
 
+#CHECK FFMPEG ALREADY RUNNING
+r = 0
+for pid in psutil.pids():
+		p = psutil.Process(pid)
+		if p.name() == "ffmpeg":
+			r = r + 1
+
+def killffmpeg():
+	for pid in psutil.pids():
+		p = psutil.Process(pid)
+		if p.name() == "ffmpeg":
+			p.kill()
+
 if livestatus == 0:
 	print 'YouTube Live broadcast is offline'
+	if r >= 1:
+		print 'Killall ffmpeg process'
+		killffmpeg()
 	try:
 		#CHECK INTERNET CONNECTION AND PORT IF OK EXEC ffmpeg command
 		s.connect((host, port))
